@@ -9,6 +9,9 @@ import React from "react";
 import { useState } from "react";
 import Slider from "@mui/material/Slider";
 import { GiRollingDices } from "react-icons/gi";
+import Switch from "@mui/material/Switch";
+import { useRecoilState } from "recoil";
+import { mood } from "./atoms";
 const axios = require("axios");
 
 export const App = () => {
@@ -24,8 +27,11 @@ export const App = () => {
   const [mouth, setMouth] = useState("laughing");
   const [baseColor, setBaseColor] = useState("coast");
 
+  //Recoil state for the mood
+  const [moodState, setMoodState] = useRecoilState(mood);
+
   const myLoader = () => {
-    return `https://avatars.dicebear.com/api/${sprite}/${seed}.svg?background=${baground}&scale=${scale}&rotate=${rotate}&flip=${flip}&hair=${hair}&mouth=${mouth}&baseColor=${baseColor}`;
+    return `https://avatars.dicebear.com/api/${sprite}/${seed}.svg?background=${baground}&scale=${scale}&rotate=${rotate}&flip=${flip}&hair=${hair}&mouth=${mouth}&baseColor=${baseColor}&mood=${moodState}`;
   };
   // Function to set the current sprite type
   function handleSprite(spritetype) {
@@ -67,7 +73,7 @@ export const App = () => {
             Choose Your Avatar
           </h1>
           <button
-            className="bg-blue-400 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="bg-neumorphismColor-blue-100 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             onClick={() => {
               handleSprite("micah");
             }}
@@ -126,6 +132,9 @@ export const App = () => {
       </div>
 
       <div class="flex flex-col justify-center space-y-4  w-1/3   bg-white drop-shadow-lg rounded-lg p-4  ">
+        <h1 className=" font-mono text-center capitalize text-2xl ">
+          Style Your Avatar
+        </h1>
         <div class="w-full  md:w-1/3 px-3 mb-6 md:mb-0  space-y-4">
           <label
             class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
@@ -236,21 +245,38 @@ export const App = () => {
               <option value="seashell">seashell</option>
               <option value="mellow">mellow</option>
             </select>
+            <h1 className=" font-mono text-center capitalize text-2xl ">
+              Select Mood
+            </h1>
+            <select
+              class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              id="grid-state"
+              onChange={(e) => {
+                const selectedMood = e.target.value;
+                setMoodState(selectedMood);
+              }}
+            >
+              <option value="happy">happy</option>
+              <option value="sad">sad</option>
+              <option value="surprised">surprised</option>
+            </select>
             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"></div>
           </div>
         </div>
 
         <div className="generate space-x-2 space-y-2">
-          <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            id="gen"
-            onClick={() => {
+          <label
+            class="block uppercase tracking-wide text-gray-700 text-xs font-bold "
+            for="grid-state"
+          >
+            Flip Avatar
+          </label>
+          <Switch
+            onChange={() => {
               setFlip(!flip);
             }}
-          >
-            Flip
-          </button>
-
+            defaultChecked
+          />
           <label
             class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
             for="grid-state"
