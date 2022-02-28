@@ -1,6 +1,14 @@
-# Getting Started with Create React App
+# Dicebear HTTP-API Avatar Generator
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project Make use of:
+
+[Create React App](https://github.com/facebook/create-react-app).
+
+[TailwindCSS](https://tailwindcss.com/).
+
+[MaterialUI](https://mui.com/)
+
+[Reacoil](https://recoiljs.org/)
 
 ## Available Scripts
 
