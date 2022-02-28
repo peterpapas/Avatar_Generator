@@ -3,7 +3,7 @@
 //TODO: ADD REDUX & RECOIL/ ATOMS
 //TODO: ADD React icons
 
-//FIXME: Fix the code
+//FIXME: Fix me
 
 import Image from "next/image";
 import React from "react";
