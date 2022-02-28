@@ -4,14 +4,18 @@
 //TODO: ADD React icons
 
 //FIXME: Fix the code
+
 import Image from "next/image";
 import React from "react";
 import { useState } from "react";
 import Slider from "@mui/material/Slider";
 import { GiRollingDices } from "react-icons/gi";
 import Switch from "@mui/material/Switch";
-import { useRecoilState } from "recoil";
-import { mood } from "./atoms";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { mood, botttsColors } from "./atoms";
+import { VectorForm } from "./Components/Form/VectorForm";
+import { BotsForm } from "./Components/Form/BotsForm";
+
 const axios = require("axios");
 
 export const App = () => {
@@ -27,11 +31,12 @@ export const App = () => {
   const [mouth, setMouth] = useState("laughing");
   const [baseColor, setBaseColor] = useState("coast");
 
-  //Recoil state for the mood
-  const [moodState, setMoodState] = useRecoilState(mood);
+  //Recoil state
+  const moodState = useRecoilValue(mood);
+  const botttsColorsState = useRecoilValue(botttsColors);
 
   const myLoader = () => {
-    return `https://avatars.dicebear.com/api/${sprite}/${seed}.svg?background=${baground}&scale=${scale}&rotate=${rotate}&flip=${flip}&hair=${hair}&mouth=${mouth}&baseColor=${baseColor}&mood=${moodState}`;
+    return `https://avatars.dicebear.com/api/${sprite}/${seed}.svg?background=${baground}&scale=${scale}&rotate=${rotate}&flip=${flip}&hair=${hair}&mouth=${mouth}&baseColor=${baseColor}&mood=${moodState}&colors=${botttsColorsState}`;
   };
   // Function to set the current sprite type
   function handleSprite(spritetype) {
@@ -73,7 +78,7 @@ export const App = () => {
             Choose Your Avatar
           </h1>
           <button
-            className="bg-neumorphismColor-blue-100 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="bg-blue-400 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             onClick={() => {
               handleSprite("micah");
             }}
@@ -127,6 +132,14 @@ export const App = () => {
             }}
           >
             Avatars
+          </button>
+          <button
+            className="bg-blue-400 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            onClick={() => {
+              handleSprite("croodles");
+            }}
+          >
+            Croodles
           </button>
         </div>
       </div>
@@ -245,21 +258,8 @@ export const App = () => {
               <option value="seashell">seashell</option>
               <option value="mellow">mellow</option>
             </select>
-            <h1 className=" font-mono text-center capitalize text-2xl ">
-              Select Mood
-            </h1>
-            <select
-              class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="grid-state"
-              onChange={(e) => {
-                const selectedMood = e.target.value;
-                setMoodState(selectedMood);
-              }}
-            >
-              <option value="happy">happy</option>
-              <option value="sad">sad</option>
-              <option value="surprised">surprised</option>
-            </select>
+            <VectorForm />
+            <BotsForm />
             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"></div>
           </div>
         </div>
