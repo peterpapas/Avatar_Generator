@@ -1,14 +1,14 @@
 # Dicebear HTTP-API Avatar Generator
 
-This project Make use of:
+### This project Make use of:
 
-[Create React App](https://github.com/facebook/create-react-app).
+-[Create React App](https://github.com/facebook/create-react-app).
 
-[TailwindCSS](https://tailwindcss.com/).
+-[TailwindCSS](https://tailwindcss.com/).
 
-[MaterialUI](https://mui.com/)
+-[MaterialUI](https://mui.com/)
 
-[Reacoil](https://recoiljs.org/)
+-[Reacoil](https://recoiljs.org/)
 
 ## Available Scripts
 
