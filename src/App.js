@@ -2,8 +2,9 @@
 //TODO: ADD slider from material UI
 //TODO: ADD REDUX & RECOIL/ ATOMS
 //TODO: ADD React icons
+//TODO:Choose avatar squar tiles with preview small imge of avatar basic form and avatar name under it 8 OPTIONS 2/4
 
-//FIXME: Fix me
+//FIXME: Center DICE
 
 import Image from "next/image";
 import React from "react";
@@ -11,10 +12,17 @@ import { useState } from "react";
 import Slider from "@mui/material/Slider";
 import { GiRollingDices } from "react-icons/gi";
 import Switch from "@mui/material/Switch";
-import { useRecoilState, useRecoilValue } from "recoil";
-import { mood, botttsColors } from "./atoms";
+import { useRecoilValue } from "recoil";
+import {
+  mood,
+  botttsColors,
+  michaHair,
+  michaMouth,
+  michaBaseColor,
+} from "./atoms";
 import { VectorForm } from "./Components/Form/VectorForm";
 import { BotsForm } from "./Components/Form/BotsForm";
+import { MichaForm } from "./Components/Form/MichaForm";
 
 const axios = require("axios");
 
@@ -23,20 +31,26 @@ export const App = () => {
   const [sprite, setSprite] = useState("micah");
   const [seed, setSeed] = useState(1000);
   const [baground, setBackground] = useState("blue");
-  const [hair, setHair] = useState("dougFunny");
   const [rotate, setRotate] = useState("0");
   const [scale, setScale] = useState("100");
   const [flip, setFlip] = useState(false);
   //Micha
-  const [mouth, setMouth] = useState("laughing");
-  const [baseColor, setBaseColor] = useState("coast");
+  //const [hair, setHair] = useState("dougFunny");
+  //const [mouth, setMouth] = useState("laughing");
+  //const [baseColor, setBaseColor] = useState("coast");
 
   //Recoil state
+  //Pixel
   const moodState = useRecoilValue(mood);
+  //Botts
   const botttsColorsState = useRecoilValue(botttsColors);
+  //micha
+  const michaHairState = useRecoilValue(michaHair);
+  const michaMouthState = useRecoilValue(michaMouth);
+  const michaBaseColorState = useRecoilValue(michaBaseColor);
 
   const myLoader = () => {
-    return `https://avatars.dicebear.com/api/${sprite}/${seed}.svg?background=${baground}&scale=${scale}&rotate=${rotate}&flip=${flip}&hair=${hair}&mouth=${mouth}&baseColor=${baseColor}&mood=${moodState}&colors=${botttsColorsState}`;
+    return `https://avatars.dicebear.com/api/${sprite}/${seed}.svg?background=${baground}&scale=${scale}&rotate=${rotate}&flip=${flip}&hair=${michaHairState}&mouth=${michaMouthState}&baseColor=${michaBaseColorState}&mood=${moodState}&colors=${botttsColorsState}`;
   };
   // Function to set the current sprite type
   function handleSprite(spritetype) {
@@ -53,7 +67,7 @@ export const App = () => {
   function downloadImage() {
     axios({
       method: "get",
-      url: `https://avatars.dicebear.com/api/${sprite}/${seed}.svg?background=${baground}&scale=${scale}&hair=${hair}`,
+      url: `https://avatars.dicebear.com/api/${sprite}/${seed}.svg?background=${baground}&scale=${scale}&rotate=${rotate}&flip=${flip}&hair=${michaHairState}&mouth=${michaMouthState}&baseColor=${michaBaseColorState}&mood=${moodState}&colors=${botttsColorsState}`,
       responseType: "arraybuffer",
     })
       .then((response) => {
@@ -174,95 +188,6 @@ export const App = () => {
             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"></div>
           </div>
         </div>
-        <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-          <label
-            class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-            for="grid-state"
-          >
-            Choose Hair
-          </label>
-          <div class="relative">
-            <select
-              class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="grid-state"
-              onChange={(e) => {
-                const selectedHair = e.target.value;
-                setHair(selectedHair);
-              }}
-            >
-              <option value="fonze">fonze</option>
-              <option value="mrT">mrT</option>
-              <option value="dougFunny">dougFunny</option>
-              <option value="mrClean">mrClean</option>
-              <option value="dannyPhantom">dannyPhantom</option>
-              <option value="full">full</option>
-              <option value="turban">turban</option>
-              <option value="pixie">pixie</option>
-            </select>
-            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"></div>
-          </div>
-        </div>
-        <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-          <label
-            class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-            for="grid-state"
-          >
-            Choose Mouth
-          </label>
-          <div class="relative">
-            <select
-              class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="grid-state"
-              onChange={(e) => {
-                const selectedMouth = e.target.value;
-                setMouth(selectedMouth);
-              }}
-            >
-              <option value="laughing">laughing</option>
-              <option value="surprised">surprised</option>
-              <option value="nervous">nervous</option>
-              <option value="smile">smile</option>
-              <option value="sad">sad</option>
-              <option value="pucker">pucker</option>
-              <option value="frown">frown</option>
-              <option value="smirk">smirk</option>
-            </select>
-            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"></div>
-          </div>
-        </div>
-        <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-          <label
-            class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-            for="grid-state"
-          >
-            Choose Color
-          </label>
-          <div class="relative">
-            <select
-              class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="grid-state"
-              onChange={(e) => {
-                const selectedColor = e.target.value;
-                setBaseColor(selectedColor);
-              }}
-            >
-              <option value="coast">coast</option>
-              <option value="apricot">apricot</option>
-              <option value="topaz">topaz</option>
-              <option value="lavender">lavender</option>
-              <option value="sky">sky</option>
-              <option value="salmon">salmon</option>
-              <option value="canary">canary</option>
-              <option value="calm">calm</option>
-              <option value="azure">azure</option>
-              <option value="seashell">seashell</option>
-              <option value="mellow">mellow</option>
-            </select>
-            <VectorForm />
-            <BotsForm />
-            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"></div>
-          </div>
-        </div>
 
         <div className="generate space-x-2 space-y-2">
           <label
@@ -309,7 +234,10 @@ export const App = () => {
               setScale(scaleValue);
             }}
           />
-
+          TODO: ADD SWITCH
+          <MichaForm />
+          <VectorForm />
+          <BotsForm />
           <button
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             id="down"
@@ -338,7 +266,7 @@ export const App = () => {
             handleGenerate();
           }}
         >
-          Roll
+          Lucky Dip
           <GiRollingDices size={55} />
         </button>
       </div>
