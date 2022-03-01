@@ -27,6 +27,25 @@ import { MichaForm } from "./Components/Form/MichaForm";
 const axios = require("axios");
 
 export const App = () => {
+  //Switch For conditionaly rendered form
+  const [switchstate, setSwitchState] = useState();
+
+  const handleSwitchstate = (SwitchState) => {
+    setSwitchState(SwitchState);
+  };
+  const conditionalForm = () => {
+    switch (switchstate) {
+      case "micha":
+        return <MichaForm />;
+      case "vector":
+        return <VectorForm />;
+      case "bots":
+        return <BotsForm />;
+      default:
+        return <MichaForm />;
+    }
+  };
+
   // Setting up the initial states using react hook 'useState'
   const [sprite, setSprite] = useState("micah");
   const [seed, setSeed] = useState(1000);
@@ -95,6 +114,7 @@ export const App = () => {
             className="bg-blue-400 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             onClick={() => {
               handleSprite("micah");
+              handleSwitchstate("micha");
             }}
           >
             Micah
@@ -103,6 +123,7 @@ export const App = () => {
             className="bg-blue-400 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             onClick={() => {
               handleSprite("human");
+              handleSwitchstate("vector");
             }}
           >
             Pixel
@@ -111,6 +132,7 @@ export const App = () => {
             className="bg-blue-400 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             onClick={() => {
               handleSprite("bottts");
+              handleSwitchstate("bots");
             }}
           >
             Bots
@@ -235,9 +257,7 @@ export const App = () => {
             }}
           />
           TODO: ADD SWITCH
-          <MichaForm />
-          <VectorForm />
-          <BotsForm />
+          {conditionalForm()}
           <button
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             id="down"
