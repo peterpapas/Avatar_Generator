@@ -5,7 +5,7 @@
 //TODO:Choose avatar squar tiles with preview small imge of avatar basic form and avatar name under it 8 OPTIONS 2/4
 
 //FIXME: Center DICE
-
+import "./App.css";
 import Image from "next/image";
 import React from "react";
 import { useState } from "react";
@@ -19,46 +19,29 @@ import {
   michaHair,
   michaMouth,
   michaBaseColor,
+  avatarsTop,
 } from "./atoms";
 import { VectorForm } from "./Components/Form/VectorForm";
 import { BotsForm } from "./Components/Form/BotsForm";
 import { MichaForm } from "./Components/Form/MichaForm";
+import { AvatarsForm } from "./Components/Form/AvatarsForm";
+import { ReactComponent as ErrorPlaceholder } from "../src/Assets/Error-Placeholder.svg";
 
 const axios = require("axios");
 
 export const App = () => {
-  //Switch For conditionaly rendered form
-  const [switchstate, setSwitchState] = useState();
-
-  const handleSwitchstate = (SwitchState) => {
-    setSwitchState(SwitchState);
-  };
-  const conditionalForm = () => {
-    switch (switchstate) {
-      case "micha":
-        return <MichaForm />;
-      case "vector":
-        return <VectorForm />;
-      case "bots":
-        return <BotsForm />;
-      default:
-        return <MichaForm />;
-    }
-  };
-
   // Setting up the initial states using react hook 'useState'
+
   const [sprite, setSprite] = useState("micah");
   const [seed, setSeed] = useState(1000);
   const [baground, setBackground] = useState("blue");
   const [rotate, setRotate] = useState("0");
   const [scale, setScale] = useState("100");
   const [flip, setFlip] = useState(false);
-  //Micha
-  //const [hair, setHair] = useState("dougFunny");
-  //const [mouth, setMouth] = useState("laughing");
-  //const [baseColor, setBaseColor] = useState("coast");
+  const [switchstate, setSwitchState] = useState();
 
   //Recoil state
+
   //Pixel
   const moodState = useRecoilValue(mood);
   //Botts
@@ -67,10 +50,34 @@ export const App = () => {
   const michaHairState = useRecoilValue(michaHair);
   const michaMouthState = useRecoilValue(michaMouth);
   const michaBaseColorState = useRecoilValue(michaBaseColor);
+  const avatarstopState = useRecoilValue(avatarsTop);
 
-  const myLoader = () => {
-    return `https://avatars.dicebear.com/api/${sprite}/${seed}.svg?background=${baground}&scale=${scale}&rotate=${rotate}&flip=${flip}&hair=${michaHairState}&mouth=${michaMouthState}&baseColor=${michaBaseColorState}&mood=${moodState}&colors=${botttsColorsState}`;
+  //Conditionally rendered form swithch
+  const conditionalForm = () => {
+    switch (switchstate) {
+      case "micha":
+        return <MichaForm />;
+      case "vector":
+        return <VectorForm />;
+      case "bots":
+        return <BotsForm />;
+      case "avataaars":
+        return <AvatarsForm />;
+      default:
+        return <MichaForm />;
+    }
   };
+  const myLoader = () => {
+    return `https://avatars.dicebear.com/api/${sprite}/${seed}.svg?background=${baground}&scale=${scale}&rotate=${rotate}&flip=${flip}&hair=${michaHairState}&mouth=${michaMouthState}&baseColor=${michaBaseColorState}&mood=${moodState}&colors=${botttsColorsState}&top=${avatarstopState}`;
+  };
+  //Handle Error Placeholder Next image
+  const [src, setSrc] = useState("/avatars.png");
+
+  //Function to handle the state of the switch
+  const handleSwitchstate = (SwitchState) => {
+    setSwitchState(SwitchState);
+  };
+
   // Function to set the current sprite type
   function handleSprite(spritetype) {
     setSprite(spritetype);
@@ -104,8 +111,8 @@ export const App = () => {
       .catch((error) => {});
   }
   return (
-    <div className=" flex flex-row space-x-8">
-      <div className=" flex justify-center w-1/3 bg-white drop-shadow-lg rounded-lg p-4 ml-10   ">
+    <div className="flex flex-row space-x-8 items-center" id="app">
+      <div className=" flex justify-center items-center w-1/3 h-3/4 bg-white drop-shadow-xl rounded-lg p-4 ml-10  bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-60 border border-gray-200 ">
         <div className="flex flex-col  space-x-2 space-y-4 w-1/2">
           <h1 className=" font-mono text-center capitalize text-2xl ">
             Choose Your Avatar
@@ -140,10 +147,10 @@ export const App = () => {
           <button
             className="bg-blue-400 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             onClick={() => {
-              handleSprite("jdenticon");
+              handleSprite("big-smile");
             }}
           >
-            Vector
+            big-smile
           </button>
           <button
             className="bg-blue-400 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
@@ -164,23 +171,16 @@ export const App = () => {
           <button
             className="bg-blue-400 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             onClick={() => {
-              handleSprite("micah");
+              handleSprite("avataaars");
+              handleSwitchstate("avataaars");
             }}
           >
             Avatars
           </button>
-          <button
-            className="bg-blue-400 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            onClick={() => {
-              handleSprite("croodles");
-            }}
-          >
-            Croodles
-          </button>
         </div>
       </div>
 
-      <div class="flex flex-col justify-center space-y-4  w-1/3   bg-white drop-shadow-lg rounded-lg p-4  ">
+      <div class="flex flex-col justify-center space-y-4  w-1/3 h-3/4  bg-white drop-shadow-xl rounded-lg p-4 bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-60 border border-gray-200 ">
         <h1 className=" font-mono text-center capitalize text-2xl ">
           Style Your Avatar
         </h1>
@@ -256,7 +256,6 @@ export const App = () => {
               setScale(scaleValue);
             }}
           />
-          TODO: ADD SWITCH
           {conditionalForm()}
           <button
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
@@ -270,17 +269,21 @@ export const App = () => {
         </div>
       </div>
 
-      <div className=" flex flex-col items-center justify-center w-1/3 ">
+      <div className=" flex flex-col items-center justify-center w-1/3 h-3/4  ">
         <Image
-          className="bg-white drop-shadow-lg rounded-t-lg"
+          className="bg-white drop-shadow-xl rounded-t-lg bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-60 border border-gray-200"
           loader={myLoader}
-          src="me.png"
+          src={src}
           alt="Sprite"
           width={500}
           height={500}
+          placeholder="blur"
+          blurDataURL="../src/Assets/Error-Placeholder.svg"
+          onError={() => setSrc("../src/Assets/Error-Placeholder.svg")} // <-- This is just to show how to handle errors
         />
+
         <button
-          className=" felx flex-col items-center justify-center bg-blue-500 hover:bg-blue-700 text-white text-3xl font-bold py-2 px-4 w-5/6 h-1/6 rounded-b-lg focus:outline-none focus:shadow-outline "
+          className=" felx flex-col items-center justify-center bg-white hover:bg-blue-400 text-white text-3xl font-bold py-2 px-4 w-5/6 h-1/6 rounded-b-lg focus:outline-none focus:shadow-outline bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-60 border border-gray-200"
           id="gen"
           onClick={() => {
             handleGenerate();
