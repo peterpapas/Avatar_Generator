@@ -21,10 +21,12 @@ import {
   michaBaseColor,
   avatarsTop,
 } from "./atoms";
+//Conditional Rendering Forms
 import { VectorForm } from "./Components/Form/VectorForm";
 import { BotsForm } from "./Components/Form/BotsForm";
 import { MichaForm } from "./Components/Form/MichaForm";
 import { AvatarsForm } from "./Components/Form/AvatarsForm";
+import { BigSmilesForm } from "./Components/Form/BigSmilesForm";
 import { ReactComponent as ErrorPlaceholder } from "../src/Assets/Error-Placeholder.svg";
 
 const axios = require("axios");
@@ -63,6 +65,8 @@ export const App = () => {
         return <BotsForm />;
       case "avataaars":
         return <AvatarsForm />;
+      case "big-smile":
+        return <BigSmilesForm />;
       default:
         return <MichaForm />;
     }
@@ -111,14 +115,17 @@ export const App = () => {
       .catch((error) => {});
   }
   return (
-    <div className="flex flex-row space-x-8 items-center" id="app">
+    <div
+      className="flex flex-row space-x-8 items-center space-y-4 md:flex-col sm:flex-col"
+      id="app"
+    >
       <div className=" flex justify-center items-center w-1/3 h-3/4 bg-white drop-shadow-xl rounded-lg p-4 ml-10  bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-60 border border-gray-200 ">
         <div className="flex flex-col  space-x-2 space-y-4 w-1/2">
           <h1 className=" font-mono text-center capitalize text-2xl ">
             Choose Your Avatar
           </h1>
           <button
-            className="bg-blue-400 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             onClick={() => {
               handleSprite("micah");
               handleSwitchstate("micha");
@@ -127,7 +134,7 @@ export const App = () => {
             Micah
           </button>
           <button
-            className="bg-blue-400 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             onClick={() => {
               handleSprite("human");
               handleSwitchstate("vector");
@@ -136,7 +143,7 @@ export const App = () => {
             Pixel
           </button>
           <button
-            className="bg-blue-400 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             onClick={() => {
               handleSprite("bottts");
               handleSwitchstate("bots");
@@ -145,15 +152,16 @@ export const App = () => {
             Bots
           </button>
           <button
-            className="bg-blue-400 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             onClick={() => {
               handleSprite("big-smile");
+              handleSwitchstate("big-smile");
             }}
           >
             big-smile
           </button>
           <button
-            className="bg-blue-400 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             onClick={() => {
               handleSprite("identicon");
             }}
@@ -161,7 +169,7 @@ export const App = () => {
             Identicon
           </button>
           <button
-            className="bg-blue-400 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             onClick={() => {
               handleSprite("gridy");
             }}
@@ -169,7 +177,7 @@ export const App = () => {
             Alien
           </button>
           <button
-            className="bg-blue-400 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             onClick={() => {
               handleSprite("avataaars");
               handleSwitchstate("avataaars");
@@ -274,7 +282,7 @@ export const App = () => {
           className="bg-white drop-shadow-xl rounded-t-lg bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-60 border border-gray-200"
           loader={myLoader}
           src={src}
-          alt="Sprite"
+          alt="Choose A Mouth"
           width={500}
           height={500}
           placeholder="blur"

@@ -1,5 +1,8 @@
 import { atom } from "recoil";
 
+//const mouth = ["smile", "openedSmile", "eating"];
+//[1].map((x) => mouth[x])
+
 export const mood = atom({
   key: "mood", // unique ID (with respect to other atoms/selectors)
   default: "happy", // default value (aka initial value)
@@ -12,7 +15,7 @@ export const botttsColors = atom({
 
 export const michaHair = atom({
   key: "michaHair", // unique ID (with respect to other atoms/selectors)
-  default: "dougFunny", // default value (aka initial value)
+  default: "mohawk", // default value (aka initial value)
 });
 
 export const michaMouth = atom({
