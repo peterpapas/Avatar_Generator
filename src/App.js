@@ -31,7 +31,7 @@ import { ReactComponent as ErrorPlaceholder } from "../src/Assets/Error-Placehol
 
 const axios = require("axios");
 
-export const App = () => {
+export const App = (imagesrc) => {
   // Setting up the initial states using react hook 'useState'
 
   const [sprite, setSprite] = useState("micah");
@@ -67,6 +67,10 @@ export const App = () => {
         return <AvatarsForm />;
       case "big-smile":
         return <BigSmilesForm />;
+      case "identicon":
+        return <BotsForm />;
+      case "gridy":
+        return;
       default:
         return <MichaForm />;
     }
@@ -75,7 +79,7 @@ export const App = () => {
     return `https://avatars.dicebear.com/api/${sprite}/${seed}.svg?background=${baground}&scale=${scale}&rotate=${rotate}&flip=${flip}&hair=${michaHairState}&mouth=${michaMouthState}&baseColor=${michaBaseColorState}&mood=${moodState}&colors=${botttsColorsState}&top=${avatarstopState}`;
   };
   //Handle Error Placeholder Next image
-  const [src, setSrc] = useState("/avatars.png");
+  const [src, setSrc] = useState("../src/Assets/Error-Placeholder.svg");
 
   //Function to handle the state of the switch
   const handleSwitchstate = (SwitchState) => {
@@ -114,18 +118,19 @@ export const App = () => {
       })
       .catch((error) => {});
   }
+
   return (
     <div
-      className="flex flex-row space-x-8 items-center space-y-4 md:flex-col sm:flex-col"
+      className="flex flex-col  md:flex-row  space-x-8 items-center space-y-4"
       id="app"
     >
-      <div className=" flex justify-center items-center w-1/3 h-3/4 bg-white drop-shadow-xl rounded-lg p-4 ml-10  bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-60 border border-gray-200 ">
-        <div className="flex flex-col  space-x-2 space-y-4 w-1/2">
+      <div className=" flex justify-center items-center w-auto h-3/4 bg-white drop-shadow-xl rounded-lg p-4 ml-10  bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-60 border border-gray-200 ">
+        <div className="flex flex-col   space-x-2 space-y-4 w-auto md:w-1/2 ">
           <h1 className=" font-mono text-center capitalize text-2xl ">
             Choose Your Avatar
           </h1>
           <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline pr-4"
             onClick={() => {
               handleSprite("micah");
               handleSwitchstate("micha");
@@ -164,6 +169,7 @@ export const App = () => {
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             onClick={() => {
               handleSprite("identicon");
+              handleSwitchstate("identicon");
             }}
           >
             Identicon
@@ -172,6 +178,7 @@ export const App = () => {
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             onClick={() => {
               handleSprite("gridy");
+              handleSwitchstate("gridy");
             }}
           >
             Alien
@@ -188,7 +195,7 @@ export const App = () => {
         </div>
       </div>
 
-      <div class="flex flex-col justify-center space-y-4  w-1/3 h-3/4  bg-white drop-shadow-xl rounded-lg p-4 bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-60 border border-gray-200 ">
+      <div class="flex flex-col justify-center space-y-4  h-3/4 w-auto md:w-1/3   bg-white drop-shadow-xl rounded-lg p-4 bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-60 border border-gray-200 ">
         <h1 className=" font-mono text-center capitalize text-2xl ">
           Style Your Avatar
         </h1>
@@ -277,17 +284,17 @@ export const App = () => {
         </div>
       </div>
 
-      <div className=" flex flex-col items-center justify-center w-1/3 h-3/4  ">
+      <div className=" flex flex-col items-center justify-center w-auto h-3/4 md:w-1/3   ">
         <Image
           className="bg-white drop-shadow-xl rounded-t-lg bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-60 border border-gray-200"
           loader={myLoader}
           src={src}
-          alt="Choose A Mouth"
+          alt="Style Your Avatar"
           width={500}
           height={500}
           placeholder="blur"
-          blurDataURL="../src/Assets/Error-Placeholder.svg"
-          onError={() => setSrc("../src/Assets/Error-Placeholder.svg")} // <-- This is just to show how to handle errors
+          blurDataURL={myLoader}
+          onError={src} // <-- This is just to show how to handle errors
         />
 
         <button
@@ -298,7 +305,7 @@ export const App = () => {
           }}
         >
           Lucky Dip
-          <GiRollingDices size={55} />
+          <GiRollingDices className="ml-10 mt-4" size={60} />
         </button>
       </div>
     </div>
