@@ -20,6 +20,7 @@ import {
   michaMouth,
   michaBaseColor,
   avatarsTop,
+  openPeepsHead,
 } from "./atoms";
 //Conditional Rendering Forms
 import { VectorForm } from "./Components/Form/VectorForm";
@@ -27,6 +28,7 @@ import { BotsForm } from "./Components/Form/BotsForm";
 import { MichaForm } from "./Components/Form/MichaForm";
 import { AvatarsForm } from "./Components/Form/AvatarsForm";
 import { BigSmilesForm } from "./Components/Form/BigSmilesForm";
+import { OpenPeepsForm } from "./Components/Form/OpenPeepsForm";
 import { ReactComponent as ErrorPlaceholder } from "../src/Assets/Error-Placeholder.svg";
 
 const axios = require("axios");
@@ -53,6 +55,8 @@ export const App = (imagesrc) => {
   const michaMouthState = useRecoilValue(michaMouth);
   const michaBaseColorState = useRecoilValue(michaBaseColor);
   const avatarstopState = useRecoilValue(avatarsTop);
+  //openPeeps
+  const openPeepsHeadState = useRecoilValue(openPeepsHead);
 
   //Conditionally rendered form swithch
   const conditionalForm = () => {
@@ -65,8 +69,8 @@ export const App = (imagesrc) => {
         return <BotsForm />;
       case "avataaars":
         return <AvatarsForm />;
-      case "big-smile":
-        return <BigSmilesForm />;
+      case "open-peeps":
+        return <OpenPeepsForm />;
       case "identicon":
         return <BotsForm />;
       case "gridy":
@@ -76,7 +80,7 @@ export const App = (imagesrc) => {
     }
   };
   const myLoader = () => {
-    return `https://avatars.dicebear.com/api/${sprite}/${seed}.svg?background=${baground}&scale=${scale}&rotate=${rotate}&flip=${flip}&hair=${michaHairState}&mouth=${michaMouthState}&baseColor=${michaBaseColorState}&mood=${moodState}&colors=${botttsColorsState}&top=${avatarstopState}`;
+    return `https://avatars.dicebear.com/api/${sprite}/${seed}.svg?background=${baground}&scale=${scale}&rotate=${rotate}&flip=${flip}&hair=${michaHairState}&mouth=${michaMouthState}&baseColor=${michaBaseColorState}&mood=${moodState}&colors=${botttsColorsState}&top=${avatarstopState}&head=${openPeepsHeadState}`;
   };
   //Handle Error Placeholder Next image
   const [src, setSrc] = useState("../src/Assets/Error-Placeholder.svg");
@@ -159,11 +163,11 @@ export const App = (imagesrc) => {
           <button
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             onClick={() => {
-              handleSprite("big-smile");
-              handleSwitchstate("big-smile");
+              handleSprite("open-peeps");
+              handleSwitchstate("open-peeps");
             }}
           >
-            big-smile
+            Mivians
           </button>
           <button
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
@@ -292,8 +296,6 @@ export const App = (imagesrc) => {
           alt="Style Your Avatar"
           width={500}
           height={500}
-          placeholder="blur"
-          blurDataURL={myLoader}
           onError={src} // <-- This is just to show how to handle errors
         />
 

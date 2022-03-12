@@ -15,7 +15,7 @@ export const botttsColors = atom({
 
 export const michaHair = atom({
   key: "michaHair", // unique ID (with respect to other atoms/selectors)
-  default: "mohawk", // default value (aka initial value)
+  default: "fonze", // default value (aka initial value)
 });
 
 export const michaMouth = atom({
@@ -31,4 +31,9 @@ export const michaBaseColor = atom({
 export const avatarsTop = atom({
   key: "avatarstop", // unique ID (with respect to other atoms/selectors)
   default: "shortHair", // default value (aka initial value)
+});
+
+export const openPeepsHead = atom({
+  key: "openPeepsHead", // unique ID (with respect to other atoms/selectors)
+  default: "afro", // default value (aka initial value)
 });
