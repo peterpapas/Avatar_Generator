@@ -21,6 +21,8 @@ import {
   michaBaseColor,
   avatarsTop,
   openPeepsHead,
+  openPeepsFace,
+  openPeepsHairColor,
 } from "./atoms";
 //Conditional Rendering Forms
 import { VectorForm } from "./Components/Form/VectorForm";
@@ -30,6 +32,7 @@ import { AvatarsForm } from "./Components/Form/AvatarsForm";
 import { BigSmilesForm } from "./Components/Form/BigSmilesForm";
 import { OpenPeepsForm } from "./Components/Form/OpenPeepsForm";
 import { ReactComponent as ErrorPlaceholder } from "../src/Assets/Error-Placeholder.svg";
+import { MainButtons } from "./Components/Buttons/MainButtons";
 
 const axios = require("axios");
 
@@ -57,6 +60,7 @@ export const App = (imagesrc) => {
   const avatarstopState = useRecoilValue(avatarsTop);
   //openPeeps
   const openPeepsHeadState = useRecoilValue(openPeepsHead);
+  const openPeepsFaceState = useRecoilValue(openPeepsFace);
 
   //Conditionally rendered form swithch
   const conditionalForm = () => {
@@ -80,7 +84,7 @@ export const App = (imagesrc) => {
     }
   };
   const myLoader = () => {
-    return `https://avatars.dicebear.com/api/${sprite}/${seed}.svg?background=${baground}&scale=${scale}&rotate=${rotate}&flip=${flip}&hair=${michaHairState}&mouth=${michaMouthState}&baseColor=${michaBaseColorState}&mood=${moodState}&colors=${botttsColorsState}&top=${avatarstopState}&head=${openPeepsHeadState}`;
+    return `https://avatars.dicebear.com/api/${sprite}/${seed}.svg?background=${baground}&scale=${scale}&rotate=${rotate}&flip=${flip}&hair=${michaHairState}&mouth=${michaMouthState}&baseColor=${michaBaseColorState}&mood=${moodState}&colors=${botttsColorsState}&top=${avatarstopState}&head=${openPeepsHeadState}&face=${openPeepsFaceState}`;
   };
   //Handle Error Placeholder Next image
   const [src, setSrc] = useState("../src/Assets/Error-Placeholder.svg");
@@ -133,69 +137,57 @@ export const App = (imagesrc) => {
           <h1 className=" font-mono text-center capitalize text-2xl ">
             Choose Your Avatar
           </h1>
-          <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline pr-4"
+
+          <MainButtons
             onClick={() => {
               handleSprite("micah");
               handleSwitchstate("micha");
             }}
-          >
-            Micah
-          </button>
-          <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            name="Micah"
+          />
+          <MainButtons
             onClick={() => {
               handleSprite("human");
               handleSwitchstate("vector");
             }}
-          >
-            Pixel
-          </button>
-          <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            name="Pixel"
+          />
+
+          <MainButtons
             onClick={() => {
               handleSprite("bottts");
               handleSwitchstate("bots");
             }}
-          >
-            Bots
-          </button>
-          <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            name="Bots"
+          />
+          <MainButtons
             onClick={() => {
               handleSprite("open-peeps");
               handleSwitchstate("open-peeps");
             }}
-          >
-            Mivians
-          </button>
-          <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            name="Peeps"
+          />
+          <MainButtons
             onClick={() => {
               handleSprite("identicon");
               handleSwitchstate("identicon");
             }}
-          >
-            Identicon
-          </button>
-          <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            name=" Identicon"
+          />
+          <MainButtons
             onClick={() => {
               handleSprite("gridy");
               handleSwitchstate("gridy");
             }}
-          >
-            Alien
-          </button>
-          <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            name="Alien"
+          />
+          <MainButtons
             onClick={() => {
               handleSprite("avataaars");
               handleSwitchstate("avataaars");
             }}
-          >
-            Avatars
-          </button>
+            name="Avatars"
+          />
         </div>
       </div>
 

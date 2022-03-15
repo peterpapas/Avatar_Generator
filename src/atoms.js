@@ -37,3 +37,8 @@ export const openPeepsHead = atom({
   key: "openPeepsHead", // unique ID (with respect to other atoms/selectors)
   default: "afro", // default value (aka initial value)
 });
+
+export const openPeepsFace = atom({
+  key: "openPeepsFace", // unique ID (with respect to other atoms/selectors)
+  default: "angryWithFang", // default value (aka initial value)
+});
