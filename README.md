@@ -14,7 +14,7 @@
 
 Clone the repository:
 
-` Git clone https://github.com/peterpapas/Avatar_Generator.git`
+` git clone https://github.com/peterpapas/Avatar_Generator.git`
 
 Navigate to the projects didectory:
 
