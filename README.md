@@ -26,8 +26,6 @@ In the project directory, you can run to intall the dependencys:
 
 Lastly run the app by using:
 
-`yarn start`
-
 ### `yarn start`
 
 Runs the app in the development mode.\
