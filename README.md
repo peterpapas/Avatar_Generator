@@ -20,7 +20,7 @@ Navigate to the projects directory:
 
 `cd Avatar_Generator`
 
-In the project directory, you can run to install the dependencies:
+In the project directory install the dependencies:
 
 `yarn`
 
