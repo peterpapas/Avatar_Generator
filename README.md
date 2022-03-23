@@ -10,7 +10,7 @@
 
 -[Reacoil](https://recoiljs.org/)
 
-## Instalation
+## Installation
 
 Clone the repository:
 
