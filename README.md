@@ -8,7 +8,7 @@
 
 -[MaterialUI](https://mui.com/)
 
--[Reacoil](https://recoiljs.org/)
+-[Recoil](https://recoiljs.org/)
 
 ## Installation
 
