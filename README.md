@@ -16,11 +16,11 @@ Clone the repository:
 
 ` git clone https://github.com/peterpapas/Avatar_Generator.git`
 
-Navigate to the projects didectory:
+Navigate to the projects directory:
 
 `cd Avatar_Generator`
 
-In the project directory, you can run to intall the dependencys:
+In the project directory, you can run to install the dependencies:
 
 `yarn`
 
