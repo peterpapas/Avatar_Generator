@@ -83,8 +83,6 @@ export const App = (imagesrc) => {
   const myLoader = () => {
     return `https://avatars.dicebear.com/api/${sprite}/${seed}.svg?background=${baground}&scale=${scale}&rotate=${rotate}&flip=${flip}&hair=${michaHairState}&mouth=${michaMouthState}&baseColor=${michaBaseColorState}&mood=${moodState}&colors=${botttsColorsState}&top=${avatarstopState}&head=${openPeepsHeadState}&face=${openPeepsFaceState}`;
   };
-  //Handle Error Placeholder Next image
-  const [src, setSrc] = useState("../src/Assets/Error-Placeholder.svg");
 
   //Function to handle the state of the switch
   const handleSwitchstate = (SwitchState) => {
