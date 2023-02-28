@@ -22,16 +22,13 @@ import {
   avatarsTop,
   openPeepsHead,
   openPeepsFace,
-  openPeepsHairColor,
 } from "./atoms";
 //Conditional Rendering Forms
 import { VectorForm } from "./Components/Form/VectorForm";
 import { BotsForm } from "./Components/Form/BotsForm";
 import { MichaForm } from "./Components/Form/MichaForm";
 import { AvatarsForm } from "./Components/Form/AvatarsForm";
-import { BigSmilesForm } from "./Components/Form/BigSmilesForm";
 import { OpenPeepsForm } from "./Components/Form/OpenPeepsForm";
-import { ReactComponent as ErrorPlaceholder } from "../src/Assets/Error-Placeholder.svg";
 import { MainButtons } from "./Components/Buttons/MainButtons";
 
 const axios = require("axios");
