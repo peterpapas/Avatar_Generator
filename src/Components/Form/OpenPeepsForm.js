@@ -28,6 +28,7 @@ export const OpenPeepsForm = () => {
             className="block appearance-none w-full bg-white border border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
             id="grid-state"
             onChange={handlePeepsHead}
+            value={peepsHead}
           >
             <option value="afro">afro</option>
             <option value="bangs">bangs</option>
@@ -66,6 +67,7 @@ export const OpenPeepsForm = () => {
           className="block appearance-none w-full bg-white border border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
           id="grid-state"
           onChange={handlePeepsFace}
+          value={peepsFace}
         >
           <option value="angryWithFang">angryWithFang</option>
           <option value="awe">awe</option>

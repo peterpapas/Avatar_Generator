@@ -25,6 +25,7 @@ export const AvatarsForm = () => {
         className="block appearance-none w-full bg-white border border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
         id="grid-state"
         onChange={handleChange}
+        value={avatarstopState}
       >
         <option value="shortHair">shortHair</option>
         <option value="longHair">longHair</option>
@@ -75,6 +76,7 @@ export const AvatarsForm = () => {
         className="block appearance-none w-full bg-white border border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
         id="grid-state"
         onChange={handleAvatarsMouth}
+        value={avatarsMouthstate}
       >
         <option value="smile">smile</option>
         <option value="tongue">tongue</option>
