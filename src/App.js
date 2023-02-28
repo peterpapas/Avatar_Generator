@@ -8,7 +8,7 @@
 import "./App.css";
 import Image from "next/image";
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Slider from "@mui/material/Slider";
 import { GiRollingDices } from "react-icons/gi";
 import Switch from "@mui/material/Switch";
@@ -33,7 +33,7 @@ import { MainButtons } from "./Components/Buttons/MainButtons";
 
 const axios = require("axios");
 
-export const App = (imagesrc) => {
+export const App = (props) => {
   // Setting up the initial states using react hook 'useState'
 
   const [sprite, setSprite] = useState("micah");
@@ -83,6 +83,8 @@ export const App = (imagesrc) => {
   const myLoader = () => {
     return `https://avatars.dicebear.com/api/${sprite}/${seed}.svg?background=${baground}&scale=${scale}&rotate=${rotate}&flip=${flip}&hair=${michaHairState}&mouth=${michaMouthState}&baseColor=${michaBaseColorState}&mood=${moodState}&colors=${botttsColorsState}&top=${avatarstopState}&head=${openPeepsHeadState}&face=${openPeepsFaceState}`;
   };
+  //Handle Error Placeholder Next image
+  const [src, setSrc] = useState("../src/Assets/Error-Placeholder.svg");
 
   //Function to handle the state of the switch
   const handleSwitchstate = (SwitchState) => {
