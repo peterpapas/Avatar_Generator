@@ -204,7 +204,7 @@ export const App = (imagesrc) => {
           </label>
           <div class="relative">
             <select
-              class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              className="block appearance-none w-full bg-white border border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-state"
               onChange={(e) => {
                 const selectedBackground = e.target.value;
@@ -218,7 +218,15 @@ export const App = (imagesrc) => {
               <option value="purple">Purple</option>
               <option value="white">white</option>
             </select>
-            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"></div>
+            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+              <svg className="h-4 w-4 fill-current" viewBox="0 0 20 20">
+                <path
+                  fillRule="evenodd"
+                  d="M5.293 6.293a1 1 0 011.414 0L10 9.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </div>
           </div>
         </div>
 
@@ -292,7 +300,7 @@ export const App = (imagesrc) => {
         />
 
         <button
-          className=" felx flex-col items-center justify-center bg-white hover:bg-blue-400 text-white text-3xl font-bold py-2 px-4 w-5/6 h-1/6 rounded-b-lg focus:outline-none focus:shadow-outline bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-60 border border-gray-200"
+          className="felx flex-col items-center justify-center bg-white hover:bg-blue-400 text-gray-800 text-3xl font-bold py-2 px-4 w-5/6 h-1/6 rounded-b-lg focus:outline-none focus:shadow-outline bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-60 border border-gray-200"
           id="gen"
           onClick={() => {
             handleGenerate();
