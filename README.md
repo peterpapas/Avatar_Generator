@@ -1,35 +1,32 @@
-# Dicebear HTTP-API Avatar Generator
+# Avatar Generator
 
-### This project Makes use of:
+Avatar Generator is a personal portfolio project designed to showcase skills in front-end development and API integration. The app allows users to create unique, customizable avatars that they can download using React, Tailwind CSS, Dicebear API, Material UI, and Recoil.
 
--[Create React App](https://github.com/facebook/create-react-app).
+## Technologies Used
 
--[TailwindCSS](https://tailwindcss.com/).
+- Create React App
+- React
+- Tailwind CSS
+- Material UI
+- Dicebear API
+- Recoil
 
--[MaterialUI](https://mui.com/)
+## Features
 
--[Recoil](https://recoiljs.org/)
+- Create unique, customizable avatars with the Dicebear API
+- Visually appealing and responsive user interface built with React and Tailwind CSS
+- Material UI components for an enhanced user experience
+- Efficient state management with Recoil
 
 ## Installation
 
-Clone the repository:
+To run the Avatar Generator locally, follow these steps:
 
-` git clone https://github.com/peterpapas/Avatar_Generator.git`
+1. Clone the repository to your local machine.
+2. Install dependencies by running npm install.
+3. Start the development server with npm start.
+4. Open http://localhost:3000 in your web browser.
 
-Navigate to the projects directory:
+## Usage
 
-`cd Avatar_Generator`
-
-In the project directory install the dependencies:
-
-`yarn`
-
-Lastly run the app by using:
-
-### `yarn start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+To use the Avatar Generator, simply adjust the sliders, switches, and buttons to customize the avatar's appearance. The app will generate a unique avatar based on the chosen parameters, which can then be downloaded or shared.
