@@ -5,6 +5,7 @@ Avatar Generator is a personal portfolio project designed to showcase skills in 
 ## Technologies Used
 
 - Create React App
+- yarn
 - React
 - Tailwind CSS
 - Material UI
@@ -23,8 +24,8 @@ Avatar Generator is a personal portfolio project designed to showcase skills in 
 To run the Avatar Generator locally, follow these steps:
 
 1. Clone the repository to your local machine.
-2. Install dependencies by running npm install.
-3. Start the development server with npm start.
+2. Install dependencies by running yarn.
+3. Start the development server with yarn start.
 4. Open http://localhost:3000 in your web browser.
 
 ## Usage
